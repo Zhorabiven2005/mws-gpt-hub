@@ -1,0 +1,32 @@
+services:
+  backend:
+    build: ./backend
+    container_name: mws-backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./backend:/app
+      - memory_data:/app/data
+    restart: unless-stopped
+
+  openwebui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: mws-openwebui
+    ports:
+      - "3000:8080"
+    environment:
+      - OPENAI_API_BASE_URL=http://backend:8000/v1
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY}
+      - ENABLE_SIGNUP=true
+    volumes:
+      - webui_data:/app/backend/data
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  memory_data:
+  webui_data:

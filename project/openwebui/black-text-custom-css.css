@@ -1,0 +1,13 @@
+/*
+  Open WebUI: Админ-панель → Настройки → Интерфейс → Пользовательский CSS
+*/
+.markdown-prose,
+.markdown-prose *,
+.prose,
+.prose * {
+  color: #000000 !important;
+  --tw-prose-body: #000000;
+  --tw-prose-headings: #000000;
+  --tw-prose-bold: #000000;
+  --tw-prose-quotes: #000000;
+}
