@@ -27,7 +27,13 @@ git clone <ваш-репозиторий>
 cd project
 ```
 
-### 3. Запустить
+### 3. Настроить ключи
+```bash
+cp .env.example .env
+```
+Заполните в `.env` ключ MWS GPT API и секрет OpenWebUI. Файл `.env` в репозиторий не попадает.
+
+### 3a. Запустить
 ```bash
 docker compose up --build
 ```
